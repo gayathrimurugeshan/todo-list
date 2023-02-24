@@ -1,2 +1,2 @@
 # todo-list
-first practice ....for my project
+first practice ....for my project.
