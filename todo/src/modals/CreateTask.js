@@ -1,23 +1,38 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const CreateTask = ({modal, toggle}) => {
-    return (
+const CreateTaskPopup = ({modal, toggle}) => {
+    const [taskNane, setTaskName] =useState('');
+    const [description, setDescription] =useState('');
+    const handleChange = (e) => {
+      
+
+    }
+        return (
         <div>
              <Modal isOpen={modal} toggle={toggle} >
-        <ModalHeader toggle={toggle}>Modal title</ModalHeader>
+        <ModalHeader toggle={toggle}>Creat Task</ModalHeader>
         <ModalBody>
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-          eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad
-          minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-          aliquip ex ea commodo consequat. Duis aute irure dolor in
-          reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla
-          pariatur. Excepteur sint occaecat cupidatat non proident, sunt in
-          culpa qui officia deserunt mollit anim id est laborum.
+       
         </ModalBody>
+        <form>
+          <div className='form-group'>
+          <label>Task Name</label>
+            <input className='form-control' type="text"  value={taskNane} onChange = {handleChange}/>
+            
+
+          </div>
+          <div className='form-group'>
+            <label>Description</label>
+            <textarea  rows = "5" className='form-control' value={description} onChange = {handleChange} >
+
+            </textarea>
+            
+          </div>
+        </form>
         <ModalFooter>
           <Button color="primary" onClick={toggle}>
-            Do Something
+            Create
           </Button>{' '}
           <Button color="secondary" onClick={toggle}>
             Cancel
@@ -30,4 +45,4 @@ const CreateTask = ({modal, toggle}) => {
     );
 };
 
-export default CreateTask;
+export default CreateTaskPopup;
