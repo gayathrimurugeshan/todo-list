@@ -5,9 +5,8 @@ const TodoList = () => {
     const [modal, setModal] = useState(false);
 
     const toggle = () => {
+       
         setModal(modal);
-
-
     }
 
 
@@ -17,7 +16,7 @@ const TodoList = () => {
             <h3> Todo List</h3>
             <button className = 'btn btn-primary' onClick={ () => setModal(true)}>create</button>
             </div>
-            <CreateTask toggle = {toggle} model = {modal}/>
+            <CreateTask toggle = {toggle} modal = {modal}/>
 
         </>
     );
