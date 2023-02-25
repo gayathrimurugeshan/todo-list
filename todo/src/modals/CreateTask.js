@@ -1,13 +1,29 @@
 import React, { useState } from 'react';
 import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'reactstrap';
 
-const CreateTaskPopup = ({modal, toggle}) => {
-    const [taskNane, setTaskName] =useState('');
+const CreateTask = ({modal, toggle, save}) => {
+    const [taskName, setTaskName] =useState('');
     const [description, setDescription] =useState('');
     const handleChange = (e) => {
+      const {name, value} = e.target
+
+      if(name === "taskName"){
+        setTaskName(value)
+      }else{
+        setDescription(value)
+      }
+    }
+
       
 
-    }
+      const handleSave = ( ) => {
+        let taskObj ={}
+        taskObj["Name"] = taskName
+        taskObj["Description"] =description
+        save(taskObj)
+      }      
+
+    
         return (
         <div>
              <Modal isOpen={modal} toggle={toggle} >
@@ -18,20 +34,20 @@ const CreateTaskPopup = ({modal, toggle}) => {
         <form>
           <div className='form-group'>
           <label>Task Name</label>
-            <input className='form-control' type="text"  value={taskNane} onChange = {handleChange}/>
+            <input className='form-control' type="text"  value={taskName} onChange = {handleChange} name = "taskName" />
             
 
           </div>
           <div className='form-group'>
             <label>Description</label>
-            <textarea  rows = "5" className='form-control' value={description} onChange = {handleChange} >
+            <textarea  rows = "5" className='form-control' value={description} onChange = {handleChange}  name = "description">
 
             </textarea>
             
           </div>
         </form>
         <ModalFooter>
-          <Button color="primary" onClick={toggle}>
+          <Button color="primary" onClick={handleSave} >
             Create
           </Button>{' '}
           <Button color="secondary" onClick={toggle}>
@@ -45,4 +61,4 @@ const CreateTaskPopup = ({modal, toggle}) => {
     );
 };
 
-export default CreateTaskPopup;
+export default CreateTask;
